@@ -2,7 +2,7 @@ name: uphome_app
 description: "Application to find the house you have always wanted "
 publish_to: 'none'
 
-version: 0.0.1+1
+version: 0.0.2+1
 
 environment:
   sdk: ^3.5.4

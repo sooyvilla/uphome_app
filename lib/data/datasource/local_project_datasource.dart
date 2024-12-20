@@ -1,6 +1,6 @@
 import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
 import 'package:uphome_app/domain/mappers/project_mapper.dart';
+
 import '../../../domain/entities/project.dart';
 import '../../domain/datasource/project_datasource.dart';
 
@@ -17,68 +17,52 @@ class LocalProjectDataSource implements ProjectDatasource {
 
   Database? _database;
 
+  Database get database => _database!;
+
   static const nameTable = 'projects';
-
-  Future<Database> get database async {
-    if (_database != null) return _database!;
-    _database = await _initDatabase();
-    return _database!;
-  }
-
-  Future<Database> _initDatabase() async {
-    final databasesPath = await getDatabasesPath();
-    final path = join(databasesPath, 'database.db');
-    return await openDatabase(path);
-  }
 
   @override
   Future<List<Project>> getProjects() async {
-    final db = await database;
+    final db = database;
     final List<Map<String, dynamic>> projects = await db.query(nameTable);
-
 
     return projects.map((project) {
       return ProjectMapper.fromMap(project);
     }).toList();
-
   }
 
   @override
   Future<Project> getProjectById(int id) async {
-    final db = await database;
-    final List<Map<String, dynamic>> maps = await db.query(
+    final db = database;
+    final List<Map<String, dynamic>> projects = await db.query(
       nameTable,
       where: 'id = ?',
       whereArgs: [id],
     );
-    return Project(
-      id: maps[0]['id'],
-      agencyId: maps[0]['agency_id'],
-      name: maps[0]['name'],
-      location: maps[0]['location'],
-      price: maps[0]['price'],
-      imageUrl: maps[0]['image_url'],
-    );
+
+    if (projects.isEmpty || projects.length > 1) {
+      throw Exception('Search error or item not found');
+    }
+
+    final project = projects
+        .map((project) {
+          return ProjectMapper.fromMap(project);
+        })
+        .toList()
+        .first;
+
+    return project;
   }
 
   @override
   Future<void> createProject(Project project) async {
-    final db = await database;
-    await db.insert(
-      nameTable,
-      {
-        'agency_id': project.agencyId,
-        'name': project.name,
-        'location': project.location,
-        'price': project.price,
-        'image_url': project.imageUrl,
-      },
-    );
+    final db = database;
+    await db.insert(nameTable, ProjectMapper.toMap(project));
   }
 
   @override
   Future<void> deleteProject(int id) async {
-    final db = await database;
+    final db = database;
     await db.delete(
       nameTable,
       where: 'id = ?',
@@ -88,16 +72,10 @@ class LocalProjectDataSource implements ProjectDatasource {
 
   @override
   Future<void> updateProject(Project project) async {
-    final db = await database;
+    final db = database;
     await db.update(
       nameTable,
-      {
-        'agency_id': project.agencyId,
-        'name': project.name,
-        'location': project.location,
-        'price': project.price,
-        'image_url': project.imageUrl,
-      },
+      ProjectMapper.toMap(project),
       where: 'id = ?',
       whereArgs: [project.id],
     );
