@@ -25,6 +25,7 @@ class LocalProjectDataSource implements ProjectDatasource {
   Future<List<Project>> getProjects() async {
     final db = database;
     final List<Map<String, dynamic>> projects = await db.query(nameTable);
+    await Future.delayed(const Duration(seconds: 2));
 
     return projects.map((project) {
       return ProjectMapper.fromMap(project);

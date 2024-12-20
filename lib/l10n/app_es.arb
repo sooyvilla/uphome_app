@@ -1,0 +1,10 @@
+{
+  "filter": "Selecciona el proyecto inmobiliario...",
+  "firstHeaderName": "Up",
+  "lastHeaderName": "Homes",
+  "title": "Bienvenido",
+  "subTitle": "Encuentra tu espacio soñado",
+  "searchBarHintText": "Dirección, nombre, precio...",
+  "buttonText": "Buscar",
+  "addButtonText": "Agregar proyecto..."
+}
