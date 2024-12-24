@@ -1,0 +1,11 @@
+{
+  "filter": "Select real state project...",
+  "firstHeaderName": "Up",
+  "lastHeaderName": "Homes",
+  "title": "Welcome",
+  "subTitle": "Find your Dream Space",
+  "searchBarHintText": "Address, name, price...",
+  "buttonText": "Search",
+  "addButtonText": "Add project...",
+  "noImagesFound": "No images found"
+}

@@ -9,8 +9,8 @@ class ProjectRepositoryImpl implements ProjectRepository {
   ProjectRepositoryImpl(this.dataSource);
 
   @override
-  Future<List<Project>> getProjects() {
-    return dataSource.getProjects();
+  Future<List<Project>> getProjects([String? query]) {
+    return dataSource.getProjects(query);
   }
 
   @override

@@ -22,9 +22,27 @@ class LocalProjectDataSource implements ProjectDatasource {
   static const nameTable = 'projects';
 
   @override
-  Future<List<Project>> getProjects() async {
+  Future<List<Project>> getProjects([String? query]) async {
     final db = database;
-    final List<Map<String, dynamic>> projects = await db.query(nameTable);
+
+    if (query != null) {
+      const searchableFields = ['name', 'location', 'price'];
+
+      final whereClauses =
+          searchableFields.map((field) => '$field LIKE ?').toList();
+      final whereString = whereClauses.join(' OR ');
+      final whereArgs = List.filled(searchableFields.length, '%$query%');
+
+      final projects = await db.query(
+        nameTable,
+        where: whereString,
+        whereArgs: whereArgs,
+      );
+
+      return projects.map((project) => ProjectMapper.fromMap(project)).toList();
+    }
+
+    final projects = await db.query(nameTable);
 
     return projects.map((project) {
       return ProjectMapper.fromMap(project);
@@ -34,7 +52,7 @@ class LocalProjectDataSource implements ProjectDatasource {
   @override
   Future<Project> getProjectById(int id) async {
     final db = database;
-    final List<Map<String, dynamic>> projects = await db.query(
+    final projects = await db.query(
       nameTable,
       where: 'id = ?',
       whereArgs: [id],

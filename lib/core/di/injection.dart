@@ -21,12 +21,14 @@ final databaseProvider = FutureProvider<Database>((ref) async {
   final databasesPath = await getDatabasesPath();
   final path = join(databasesPath, 'database.db');
 
-  await deleteDatabase(path);
+  bool hasDatabase = await databaseExists(path);
 
-  ByteData data = await rootBundle.load("assets/db/database.db");
-  List<int> bytes =
-      data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
-  await File(path).writeAsBytes(bytes);
+  if (!hasDatabase) {
+    ByteData data = await rootBundle.load('assets/db/database.db');
+    List<int> bytes =
+        data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    await File(path).writeAsBytes(bytes);
+  }
 
   return await openDatabase(path);
 });
