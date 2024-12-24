@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../core/exports.dart';
-import '../features/home/screen/home_screen.dart';
 import '../styles/fonts/fonts.dart';
+import 'drop_down.dart';
 import 'logo.dart';
 import 'search.dart';
 
@@ -34,9 +34,9 @@ class AppbarCustom extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const DropDownCustom(),
-                const SizedBox(height: 68),
+                const SizedBox(height: 32),
                 const LogoWidget(),
-                const SizedBox(height: 20),
+                const SizedBox(height: 14),
                 Text(
                   text.title,
                   style: Fonts.ROBOTO_42_BOLD,
@@ -45,7 +45,7 @@ class AppbarCustom extends StatelessWidget {
                   text.subTitle,
                   style: Fonts.ROBOTO_16_NORMAL,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 14),
                 const SearchWidget(),
               ],
             ),

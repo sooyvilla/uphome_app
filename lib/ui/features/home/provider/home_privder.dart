@@ -13,33 +13,48 @@ class HomeProvider extends StateNotifier<HomeState> {
   HomeProvider(this.ref) : super(HomeState());
   final Ref ref;
 
-  void getProjects() async {
+  void getProjects([String? query]) async {
     state = state.copyWith(status: HomeStatus.loading);
+    if (query?.isEmpty ?? true) {
+      query = null;
+    }
+
     try {
-      final projects = await ref.read(projectRepositoryProvider).getProjects();
+      final projects =
+          await ref.read(projectRepositoryProvider).getProjects(query);
       state = state.copyWith(status: HomeStatus.success, projects: projects);
     } catch (e) {
       state = state.copyWith(status: HomeStatus.error);
     }
   }
+
+  setQuery(String query) {
+    if (query == state.query) return;
+    state = state.copyWith(query: query);
+  }
 }
+
 
 class HomeState {
   final HomeStatus status;
   final List<Project> projects;
+  final String query;
 
   HomeState({
     this.status = HomeStatus.loading,
     this.projects = const [],
+    this.query = '',
   });
 
   HomeState copyWith({
     HomeStatus? status,
     List<Project>? projects,
+    String? query,
   }) {
     return HomeState(
       status: status ?? this.status,
       projects: projects ?? this.projects,
+      query: query ?? this.query,
     );
   }
 }

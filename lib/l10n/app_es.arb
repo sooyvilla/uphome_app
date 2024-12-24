@@ -6,5 +6,6 @@
   "subTitle": "Encuentra tu espacio soñado",
   "searchBarHintText": "Dirección, nombre, precio...",
   "buttonText": "Buscar",
-  "addButtonText": "Agregar proyecto..."
+  "addButtonText": "Agregar proyecto...",
+  "noImagesFound": "No se encontraron imágenes"
 }

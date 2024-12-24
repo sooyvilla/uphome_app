@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uphome_app/core/exports.dart';
+import 'package:uphome_app/ui/features/home/provider/home_privder.dart';
 import 'package:uphome_app/ui/widgets/buttons.dart';
 
-class SearchWidget extends StatelessWidget {
+class SearchWidget extends ConsumerWidget {
   const SearchWidget({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     final text = AppLocalizations.of(context)!;
 
     return Container(
@@ -31,9 +33,23 @@ class SearchWidget extends StatelessWidget {
                 hintText: text.searchBarHintText,
                 border: InputBorder.none,
               ),
+              onChanged: (string) {
+                ref.read(homeProvider.notifier).setQuery(string);
+                if (string.isEmpty) {
+                  ref.read(homeProvider.notifier).getProjects();
+                }
+              },
             ),
           ),
-          PrimaryTextButton(text: text.buttonText),
+          PrimaryTextButton(
+            text: text.buttonText,
+            onPressed: () {
+              FocusScope.of(context).unfocus();
+
+              final query = ref.read(homeProvider).query;
+              ref.read(homeProvider.notifier).getProjects(query);
+            },
+          ),
         ],
       ),
     );
