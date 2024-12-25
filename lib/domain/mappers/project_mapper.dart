@@ -1,4 +1,4 @@
-import 'package:uphome_app/domain/entities/project.dart';
+import '../entities/project.dart';
 
 class ProjectMapper {
   static Project fromMap(Map<String, dynamic> json) {
@@ -9,6 +9,7 @@ class ProjectMapper {
       location: json['location'],
       price: json['price'],
       imageUrl: json['image_url'],
+      description: json['description'],
     );
   }
 
@@ -20,6 +21,7 @@ class ProjectMapper {
       'location': project.location,
       'price': project.price,
       'image_url': project.imageUrl,
+      'description': project.description,
     };
   }
 }

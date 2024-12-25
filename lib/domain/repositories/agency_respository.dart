@@ -1,4 +1,4 @@
-import 'package:uphome_app/domain/entities/agency.dart';
+import '../entities/agency.dart';
 
 abstract class AgencyRespository {
   Future<List<Agency>> getAgencies();

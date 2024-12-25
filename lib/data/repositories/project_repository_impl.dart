@@ -1,5 +1,4 @@
-import 'package:uphome_app/domain/datasource/project_datasource.dart';
-
+import '../../domain/datasource/project_datasource.dart';
 import '../../domain/entities/project.dart';
 import '../../domain/repositories/project_repository.dart';
 

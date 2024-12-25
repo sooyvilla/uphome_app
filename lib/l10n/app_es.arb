@@ -7,5 +7,9 @@
   "searchBarHintText": "Dirección, nombre, precio...",
   "buttonText": "Buscar",
   "addButtonText": "Agregar proyecto...",
-  "noImagesFound": "No se encontraron imágenes"
+  "noImagesFound": "No se encontraron imágenes",
+  "description": "Descripción",
+  "descriptionIsNull": "Nostrud ea occaecat ea pariatur quis velit esse consequat adipisicing ut officia. Consequat commodo adipisicing nostrud ut. Ex incididunt do tempor labore esse sit exercitation ipsum veniam do labore. Ullamco eu Lorem et cillum cupidatat. Ea ipsum sint non consectetur fugiat velit quis ad.",
+  "taxes": "+ impuestos/cargos",
+  "buttonContact": "Contactar"
 }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:uphome_app/core/exports.dart';
-import 'package:uphome_app/ui/features/home/provider/home_privder.dart';
-import 'package:uphome_app/ui/widgets/buttons.dart';
+
+import '../../core/exports.dart';
+import '../features/home/provider/home_privder.dart';
+import 'buttons.dart';
 
 class SearchWidget extends ConsumerWidget {
   const SearchWidget({
@@ -29,6 +30,7 @@ class SearchWidget extends ConsumerWidget {
           const SizedBox(width: 8),
           Expanded(
             child: TextField(
+              focusNode: ref.read(homeProvider.notifier).focusNode,
               decoration: InputDecoration(
                 hintText: text.searchBarHintText,
                 border: InputBorder.none,
@@ -44,8 +46,7 @@ class SearchWidget extends ConsumerWidget {
           PrimaryTextButton(
             text: text.buttonText,
             onPressed: () {
-              FocusScope.of(context).unfocus();
-
+              ref.read(homeProvider.notifier).focusNode.unfocus();
               final query = ref.read(homeProvider).query;
               ref.read(homeProvider.notifier).getProjects(query);
             },

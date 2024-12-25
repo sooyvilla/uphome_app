@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:uphome_app/ui/styles/colors/up_colors.dart';
+
+import '../../ui/styles/colors/up_colors.dart';
 
 final themeNotifierProvider =
-    StateNotifierProvider<ThemeNotifier, Color>((ref) {
+    StateNotifierProvider<ThemeNotifier, AppTheme>((ref) {
   return ThemeNotifier();
 });
 
-class ThemeNotifier extends StateNotifier<Color> {
-  ThemeNotifier() : super(UpColors.primary);
+class ThemeNotifier extends StateNotifier<AppTheme> {
+  ThemeNotifier() : super(AppTheme(UpColors.background));
 
   void updateTheme(Color color) {
-    state = color;
+    state = AppTheme(color);
+  }
+
+  void reset() {
+    state = AppTheme(UpColors.background);
   }
 }
 

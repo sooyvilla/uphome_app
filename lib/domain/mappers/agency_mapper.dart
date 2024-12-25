@@ -1,4 +1,4 @@
-import 'package:uphome_app/domain/entities/agency.dart';
+import '../entities/agency.dart';
 
 class AgencyMapper {
   static Agency fromMap(Map<String, dynamic> json) {

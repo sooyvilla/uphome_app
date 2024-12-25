@@ -4,10 +4,16 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class ImageWidget extends StatelessWidget {
   const ImageWidget({
     super.key,
+    this.height,
+    this.border,
+    this.fit = BoxFit.cover,
     required this.image,
   });
 
   final String image;
+  final double? height;
+  final BoxFit fit;
+  final BorderRadiusGeometry? border;
 
   bool _isNetworkImage(String url) {
     return url.startsWith('http') || url.startsWith('https');
@@ -18,17 +24,18 @@ class ImageWidget extends StatelessWidget {
     final text = AppLocalizations.of(context)!;
 
     return ClipRRect(
-      borderRadius: const BorderRadius.only(
-        topLeft: Radius.circular(12),
-        topRight: Radius.circular(12),
-      ),
+      borderRadius: border ??
+          const BorderRadius.only(
+            topLeft: Radius.circular(12),
+            topRight: Radius.circular(12),
+          ),
       child: Center(
         child: _isNetworkImage(image)
             ? Image.network(
                 image,
-                fit: BoxFit.cover,
+                fit: fit,
                 width: double.infinity,
-                height: 200,
+                height: height ?? 200,
                 errorBuilder: (context, error, stackTrace) {
                   return _errorPlaceholder(text);
                 },
@@ -37,7 +44,7 @@ class ImageWidget extends StatelessWidget {
                 image,
                 fit: BoxFit.cover,
                 width: double.infinity,
-                height: 200,
+                height: height ?? 200,
                 errorBuilder: (context, error, stackTrace) {
                   return _errorPlaceholder(text);
                 },

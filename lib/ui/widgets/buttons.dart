@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:uphome_app/ui/styles/colors/up_colors.dart';
 
 import '../../core/exports.dart';
+import '../styles/colors/up_colors.dart';
 import '../styles/fonts/fonts.dart';
 
 class PrimaryTextButton extends StatelessWidget {

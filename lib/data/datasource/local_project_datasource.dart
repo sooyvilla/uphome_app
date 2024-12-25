@@ -1,8 +1,8 @@
 import 'package:sqflite/sqflite.dart';
-import 'package:uphome_app/domain/mappers/project_mapper.dart';
 
 import '../../../domain/entities/project.dart';
 import '../../domain/datasource/project_datasource.dart';
+import '../../domain/mappers/project_mapper.dart';
 
 class LocalProjectDataSource implements ProjectDatasource {
   static final LocalProjectDataSource _instance =

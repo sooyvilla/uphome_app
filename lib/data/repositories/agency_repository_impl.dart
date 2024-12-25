@@ -1,6 +1,6 @@
-import 'package:uphome_app/domain/datasource/agency_datasource.dart';
-import 'package:uphome_app/domain/entities/agency.dart';
-import 'package:uphome_app/domain/repositories/agency_respository.dart';
+import '../../domain/datasource/agency_datasource.dart';
+import '../../domain/entities/agency.dart';
+import '../../domain/repositories/agency_respository.dart';
 
 class AgencyRepositoryImpl implements AgencyRespository {
   final AgencyDatasource datasource;

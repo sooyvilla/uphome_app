@@ -20,6 +20,22 @@ class Fonts {
     fontWeight: FontWeight.bold,
     color: Colors.white,
   );
+  // Tamaño 14
+  static final ROBOTO_14_REGULAR = GoogleFonts.roboto(
+    fontSize: 14,
+    fontWeight: FontWeight.w300,
+    color: Colors.white,
+  );
+  static final ROBOTO_14_NORMAL = GoogleFonts.roboto(
+    fontSize: 14,
+    fontWeight: FontWeight.normal,
+    color: Colors.white,
+  );
+  static final ROBOTO_14_BOLD = GoogleFonts.roboto(
+    fontSize: 14,
+    fontWeight: FontWeight.bold,
+    color: Colors.white,
+  );
 
   // Tamaño 16
   static final ROBOTO_16_REGULAR = GoogleFonts.roboto(
