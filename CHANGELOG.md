@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.2.0 (26/12/2024)
+
+* Se implemento animaciones en la pantalla de detalles
+* Se implemento la busqueda de dispositivos bluetooth al entrar en algun proyecto
+* Se implemento el cambio de tema al entrar en algun proyecto
+
 ## 0.1.0 (19/12/2024)
 
 * Se implementa pantalla de detalles

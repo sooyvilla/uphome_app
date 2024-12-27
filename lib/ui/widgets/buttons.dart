@@ -9,10 +9,12 @@ class PrimaryTextButton extends StatelessWidget {
     super.key,
     required this.text,
     this.onPressed,
+    this.color = UpColors.primary,
   });
 
   final String text;
   final VoidCallback? onPressed;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class PrimaryTextButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
-        backgroundColor: UpColors.primary,
+        backgroundColor: color,
         padding: const EdgeInsets.symmetric(horizontal: 28),
       ),
       child: Text(
