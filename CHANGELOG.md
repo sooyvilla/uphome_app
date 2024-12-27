@@ -6,9 +6,9 @@
 * Se implemento la busqueda de dispositivos bluetooth al entrar en algun proyecto
 * Se implemento el cambio de tema al entrar en algun proyecto
 
-## 0.1.0 (19/12/2024)
+## 0.1.0 (20/12/2024)
 
-* Se implementa pantalla de detalles
+* Se implementa home con su buscador
 
 ## 0.0.2 (19/12/2024)
 
