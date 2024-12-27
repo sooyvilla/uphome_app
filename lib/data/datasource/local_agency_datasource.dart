@@ -1,7 +1,8 @@
 import 'package:sqflite/sqflite.dart';
-import 'package:uphome_app/domain/datasource/agency_datasource.dart';
-import 'package:uphome_app/domain/entities/agency.dart';
-import 'package:uphome_app/domain/mappers/agency_mapper.dart';
+
+import '../../domain/datasource/agency_datasource.dart';
+import '../../domain/entities/agency.dart';
+import '../../domain/mappers/agency_mapper.dart';
 
 class LocalAgencyDatasource implements AgencyDatasource {
   static final LocalAgencyDatasource _instance =
@@ -33,14 +34,16 @@ class LocalAgencyDatasource implements AgencyDatasource {
   @override
   Future<Agency> getAgencyById(int id) async {
     final db = database;
-    final List<Map<String, dynamic>> agencies = await db.query(nameTable);
+    final List<Map<String, dynamic>> agencies = await db.query(
+      nameTable,
+      where: 'id = ?',
+      whereArgs: [id],
+    );
 
-    if (agencies.isEmpty || agencies.length > 1) {
-      throw Exception('Search error or item not found');
+    if (agencies.isEmpty) {
+      throw Exception('Item not found');
     }
 
-    final item = AgencyMapper.fromMap(agencies.first);
-
-    return item;
+    return AgencyMapper.fromMap(agencies.first);
   }
 }

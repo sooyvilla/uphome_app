@@ -5,6 +5,7 @@ class Project {
   final String location;
   final int price;
   final String? imageUrl;
+  final String? description;
 
   Project({
     required this.id,
@@ -13,5 +14,6 @@ class Project {
     required this.location,
     required this.price,
     this.imageUrl,
+    this.description,
   });
 }

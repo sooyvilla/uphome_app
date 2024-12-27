@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:uphome_app/domain/entities/project.dart';
-
 import '../../../../core/di/injection.dart';
+import '../../../../domain/entities/project.dart';
 
 final homeProvider = StateNotifierProvider<HomeProvider, HomeState>((ref) {
   return HomeProvider(ref);
@@ -12,6 +12,10 @@ final homeProvider = StateNotifierProvider<HomeProvider, HomeState>((ref) {
 class HomeProvider extends StateNotifier<HomeState> {
   HomeProvider(this.ref) : super(HomeState());
   final Ref ref;
+
+  final focus = FocusNode();
+
+  get focusNode => focus;
 
   void getProjects([String? query]) async {
     state = state.copyWith(status: HomeStatus.loading);
@@ -33,7 +37,6 @@ class HomeProvider extends StateNotifier<HomeState> {
     state = state.copyWith(query: query);
   }
 }
-
 
 class HomeState {
   final HomeStatus status;

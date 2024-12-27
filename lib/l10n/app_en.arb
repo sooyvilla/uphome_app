@@ -7,5 +7,11 @@
   "searchBarHintText": "Address, name, price...",
   "buttonText": "Search",
   "addButtonText": "Add project...",
-  "noImagesFound": "No images found"
+  "noImagesFound": "No images found",
+  "description": "Description",
+  "descriptionIsNull": "Nostrud ea occaecat ea pariatur quis velit esse consequat adipisicing ut officia. Consequat commodo adipisicing nostrud ut. Ex incididunt do tempor labore esse sit exercitation ipsum veniam do labore. Ullamco eu Lorem et cillum cupidatat. Ea ipsum sint non consectetur fugiat velit quis ad.",
+  "taxes": "+ taxes/fess",
+  "buttonContact": "Contact",
+  "availableBlue": "Available devices",
+  "connectButton": "Connect"
 }

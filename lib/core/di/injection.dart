@@ -5,14 +5,14 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:uphome_app/data/datasource/local_agency_datasource.dart';
-import 'package:uphome_app/data/repositories/agency_repository_impl.dart';
-import 'package:uphome_app/domain/datasource/agency_datasource.dart';
-import 'package:uphome_app/domain/repositories/agency_respository.dart';
 
+import '../../data/datasource/local_agency_datasource.dart';
 import '../../data/datasource/local_project_datasource.dart';
+import '../../data/repositories/agency_repository_impl.dart';
 import '../../data/repositories/project_repository_impl.dart';
+import '../../domain/datasource/agency_datasource.dart';
 import '../../domain/datasource/project_datasource.dart';
+import '../../domain/repositories/agency_respository.dart';
 import '../../domain/repositories/project_repository.dart';
 import '../config/environment_config.dart';
 import '../enums/environment.dart';
@@ -51,7 +51,7 @@ final projectDataSourceProvider = Provider<ProjectDatasource>((ref) {
           return LocalProjectDataSource(db);
       }
     },
-    orElse: () => throw Exception("Failed to load database"),
+    orElse: () => throw Exception('Failed to load database'),
   );
 });
 final agencyDataSourceProvider = Provider<AgencyDatasource>((ref) {
@@ -66,7 +66,7 @@ final agencyDataSourceProvider = Provider<AgencyDatasource>((ref) {
           return LocalAgencyDatasource(db);
       }
     },
-    orElse: () => throw Exception("Failed to load database"),
+    orElse: () => throw Exception('Failed to load database'),
   );
 });
 
