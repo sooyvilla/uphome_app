@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:sqflite/sqflite.dart';
 
 import '../../../domain/entities/project.dart';
@@ -74,8 +76,12 @@ class LocalProjectDataSource implements ProjectDatasource {
 
   @override
   Future<void> createProject(Project project) async {
-    final db = database;
-    await db.insert(nameTable, ProjectMapper.toMap(project));
+    try {
+      final db = database;
+      await db.insert(nameTable, ProjectMapper.toMap(project));
+    } catch (e) {
+      log(e.toString(), name: 'Save project');
+    }
   }
 
   @override

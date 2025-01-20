@@ -7,6 +7,7 @@ import '../../../styles/fonts/fonts.dart';
 import '../../../widgets/appbar_custom.dart';
 import '../../../widgets/buttons.dart';
 import '../../../widgets/image_builder.dart';
+import '../../create/screen/create_screen.dart';
 import '../../details/screen/details_screen.dart';
 import '../provider/home_privder.dart';
 
@@ -74,7 +75,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ? const SizedBox.shrink()
                   : ButtonWithText(
                       key: const ValueKey('button'),
-                      onPressed: () {},
+                      onPressed: () async {
+                        await Navigator.of(context)
+                            .pushNamed(CreateScreen.routeName);
+
+                        ref.read(homeProvider.notifier).getProjects();
+                      },
                     ),
             ),
             if (homeNotifier.status == HomeStatus.loading)
@@ -98,7 +104,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           DetailsScreen.routeName,
                           arguments: project,
                         );
-                      ref.read(themeNotifierProvider.notifier).reset();
+                        ref.read(themeNotifierProvider.notifier).reset();
                       },
                       child: Container(
                         margin: const EdgeInsets.symmetric(vertical: 12),
@@ -119,7 +125,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           children: [
                             Hero(
                               tag: project.id,
-                              child: ImageWidget(
+                              child: ImageBuilder(
                                 image: project.imageUrl ?? '',
                               ),
                             ),

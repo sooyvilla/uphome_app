@@ -12,6 +12,12 @@
 	<string>Acceso a tu ubicación permite sugerir propiedades y servicios relevantes según tu ubicación.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Tu ubicación es utilizada para mostrar inmuebles cercanos mientras navegas por la aplicación.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Esta aplicación necesita acceso a tu galería para que puedas subir imágenes de los inmuebles.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Esta aplicación necesita acceso a tu cámara para que puedas tomar fotos de los inmuebles y subirlas.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Esta aplicación necesita acceso al micrófono para grabar videos de los inmuebles con audio.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

@@ -28,7 +28,6 @@ class DetailsProvider extends StateNotifier<DetailsState> {
   }
 
   void getBluetoothDevices() {
-
     flutterBlue.isScanning.listen((isScanning) {
       if (isScanning) return;
     });
@@ -41,6 +40,12 @@ class DetailsProvider extends StateNotifier<DetailsState> {
     }).onDone(() {
       flutterBlue.stopScan();
     });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    flutterBlue.stopScan();
   }
 }
 
