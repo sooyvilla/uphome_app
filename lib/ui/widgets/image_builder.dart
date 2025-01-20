@@ -1,8 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class ImageWidget extends StatelessWidget {
-  const ImageWidget({
+class ImageBuilder extends StatelessWidget {
+  const ImageBuilder({
     super.key,
     this.height,
     this.border,
@@ -19,6 +21,14 @@ class ImageWidget extends StatelessWidget {
     return url.startsWith('http') || url.startsWith('https');
   }
 
+  bool _isAssetImage(String path) {
+    return !path.startsWith('/') && !path.startsWith('http');
+  }
+
+  bool _isFileImage(String path) {
+    return File(path).existsSync();
+  }
+
   @override
   Widget build(BuildContext context) {
     final text = AppLocalizations.of(context)!;
@@ -30,8 +40,10 @@ class ImageWidget extends StatelessWidget {
             topRight: Radius.circular(12),
           ),
       child: Center(
-        child: _isNetworkImage(image)
-            ? Image.network(
+        child: Builder(
+          builder: (context) {
+            if (_isNetworkImage(image)) {
+              return Image.network(
                 image,
                 fit: fit,
                 width: double.infinity,
@@ -39,16 +51,32 @@ class ImageWidget extends StatelessWidget {
                 errorBuilder: (context, error, stackTrace) {
                   return _errorPlaceholder(text);
                 },
-              )
-            : Image.asset(
+              );
+            } else if (_isAssetImage(image)) {
+              return Image.asset(
                 image,
-                fit: BoxFit.cover,
+                fit: fit,
                 width: double.infinity,
                 height: height ?? 200,
                 errorBuilder: (context, error, stackTrace) {
                   return _errorPlaceholder(text);
                 },
-              ),
+              );
+            } else if (_isFileImage(image)) {
+              return Image.file(
+                File(image),
+                fit: fit,
+                width: double.infinity,
+                height: height ?? 200,
+                errorBuilder: (context, error, stackTrace) {
+                  return _errorPlaceholder(text);
+                },
+              );
+            } else {
+              return _errorPlaceholder(text);
+            }
+          },
+        ),
       ),
     );
   }

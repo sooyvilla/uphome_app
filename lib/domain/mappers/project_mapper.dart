@@ -9,19 +9,18 @@ class ProjectMapper {
       location: json['location'],
       price: json['price'],
       imageUrl: json['image_url'],
-      description: json['description'],
+      // description: json['description'],
     );
   }
 
   static Map<String, dynamic> toMap(Project project) {
     return {
-      'id': project.id,
       'agency_id': project.agencyId,
       'name': project.name,
       'location': project.location,
       'price': project.price,
       'image_url': project.imageUrl,
-      'description': project.description,
+      // 'description': project.description,
     };
   }
 }

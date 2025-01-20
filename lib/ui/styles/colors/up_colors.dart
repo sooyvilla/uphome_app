@@ -7,4 +7,6 @@ class UpColors {
   static const Color textPrimary = Color(0xFF212121);
   static const Color textSecondary = Color(0xFF757575);
   static const Color background = Color(0xFFFFFFFF);
+  static const Color grey = Color(0xFFf2f4f8);
+  static const Color greyBold = Color(0xFF95a1ac);
 }

@@ -25,5 +25,14 @@ class AppTheme {
 
   AppTheme(this.color);
 
-  ThemeData get theme => ThemeData(colorSchemeSeed: color);
+  ThemeData get theme => ThemeData(
+        colorSchemeSeed: color,
+        scaffoldBackgroundColor:
+            color == UpColors.background ? Colors.white : null,
+        appBarTheme: AppBarTheme(
+          backgroundColor: color == UpColors.background ? Colors.white : color,
+          elevation: 0,
+          iconTheme: IconThemeData(color: Colors.white),
+        ),
+      );
 }

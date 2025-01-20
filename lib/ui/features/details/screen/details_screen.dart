@@ -63,7 +63,7 @@ class _DetailsScreenState extends ConsumerState<DetailsScreen> {
                       children: [
                         Hero(
                           tag: widget.project.id,
-                          child: ImageWidget(
+                          child: ImageBuilder(
                             image: widget.project.imageUrl ?? 'no assets',
                             border: const BorderRadius.all(
                               Radius.circular(16),
