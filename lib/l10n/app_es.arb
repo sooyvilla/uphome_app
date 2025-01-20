@@ -13,5 +13,21 @@
   "taxes": "+ impuestos/cargos",
   "buttonContact": "Contactar",
   "availableBlue": "Dispositivos disponibles",
-  "connectButton": "Conectar"
+  "connectButton": "Conectar",
+  "createProjectTitle": "Crear Proyecto",
+  "createAddImage": "Agregar Imagen",
+  "createFielddName": "NOMBRE DEL PROYECTO",
+  "createFieldPlaceholder": "Algo llamativo...",
+  "createFieldAddress": "DIRECCIÓN DEL PROYECTO",
+  "createFieldAddressPlaceholder": "123 Disney way aquí...",
+  "createFieldPrice": "PRECIO",
+  "createFieldPricePlaceholder": "PRECIO",
+  "createFieldDescription": "DESCRIPCIÓN",
+  "createFieldDescriptionPlaceholder": "Barrio o ciudad..",
+  "createFieldError": "Por favor ingrese algún texto",
+  "createButton": "GUARDAR",
+  "createNoImageSelected": "No se seleccionó ninguna imagen",
+  "createNoPermission": "No tienes permiso para acceder a la galería",
+  "createMenuTitleImage": "Opciones",
+  "createMenuRemoveItem": "Eliminar"
 }

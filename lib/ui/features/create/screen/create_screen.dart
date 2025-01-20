@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import '../../../../core/exports.dart';
 import '../../../styles/colors/up_colors.dart';
 import '../../../styles/fonts/fonts.dart';
 import '../../../widgets/buttons.dart';
@@ -26,10 +27,12 @@ class _CreateScreenState extends ConsumerState<CreateScreen> {
   Widget build(BuildContext context) {
     final createNotifier = ref.read(createProvider.notifier);
 
+    final text = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Create Project',
+          text.createProjectTitle,
           style: Fonts.ROBOTO_20_NORMAL.copyWith(
             color: Colors.black,
           ),
@@ -58,53 +61,53 @@ class _CreateScreenState extends ConsumerState<CreateScreen> {
               children: [
                 _CustomImagePicker(),
                 CustomInput(
-                  label: 'PROJECT NAME',
-                  placeholder: 'Something Catchy...',
+                  label: text.createFielddName,
+                  placeholder: text.createFieldPlaceholder,
                   onChanged: (value) =>
                       createNotifier.updateField('name', value),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
+                      return text.createFieldError;
                     }
                     return null;
                   },
                 ),
                 CustomInput(
-                  label: 'PROJECT ADDRESS',
-                  placeholder: '123 Disney way here...',
+                  label: text.createFieldAddress,
+                  placeholder: text.createFieldPlaceholder,
                   keyboardType: TextInputType.streetAddress,
                   onChanged: (value) =>
                       createNotifier.updateField('location', value),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
+                      return text.createFieldError;
                     }
                     return null;
                   },
                 ),
                 CustomInput(
-                  label: 'PRICE',
-                  placeholder: '\$PRICE',
+                  label: text.createFieldPrice,
+                  placeholder: text.createFieldPlaceholder,
                   keyboardType: TextInputType.number,
                   onChanged: (value) => createNotifier.updateField(
                       'price', int.parse(value.isEmpty ? '0' : value)),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
+                      return text.createFieldError;
                     }
                     return null;
                   },
                 ),
                 CustomInput(
-                  label: 'DESCRIPTION',
-                  placeholder: 'Neighborhood or city..',
+                  label: text.createFieldDescription,
+                  placeholder: text.createFieldPlaceholder,
                   maxLines: 4,
                   // onChanged: (value) => createNotifier.updateField(
                   //     'description',
                   //     value), //todo: falta implementar el campo en la db
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
+                      return text.createFieldError;
                     }
                     return null;
                   },
@@ -112,7 +115,7 @@ class _CreateScreenState extends ConsumerState<CreateScreen> {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: PrimaryTextButton(
-                    text: 'SAVE',
+                    text: text.createButton,
                     onPressed: () async {
                       final imageState =
                           ref.read(createProvider).fields['image_url'];
@@ -206,6 +209,7 @@ class _CustomImagePickerState extends ConsumerState<_CustomImagePicker> {
 
   void pickImage() async {
     final _picker = ImagePicker();
+    final text = AppLocalizations.of(context)!;
 
     try {
       await getPermission();
@@ -223,7 +227,7 @@ class _CustomImagePickerState extends ConsumerState<_CustomImagePicker> {
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('No image selected'),
+          content: Text(text.createNoImageSelected),
         ),
       );
     }
@@ -231,22 +235,26 @@ class _CustomImagePickerState extends ConsumerState<_CustomImagePicker> {
 
   Future<void> getPermission() async {
     final permission = await Permission.photos.request();
+
+    final text = AppLocalizations.of(context)!;
     if (permission.isGranted) {
       return;
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Permission denied'),
+          content: Text(text.createNoPermission),
         ),
       );
     }
   }
 
   void showMenuOptions() {
+    final text = AppLocalizations.of(context)!;
+
     showCupertinoModalPopup(
       context: context,
       builder: (context) => CupertinoActionSheet(
-        title: Text('Options'),
+        title: Text(text.createMenuTitleImage),
         actions: [
           CupertinoActionSheetAction(
             isDestructiveAction: true,
@@ -254,7 +262,7 @@ class _CustomImagePickerState extends ConsumerState<_CustomImagePicker> {
               ref.read(createProvider.notifier).updateField('image_url', '');
               Navigator.pop(context);
             },
-            child: Text('Remove'),
+            child: Text(text.createMenuRemoveItem),
           ),
         ],
       ),

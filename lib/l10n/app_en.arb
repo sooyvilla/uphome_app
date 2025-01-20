@@ -13,5 +13,21 @@
   "taxes": "+ taxes/fess",
   "buttonContact": "Contact",
   "availableBlue": "Available devices",
-  "connectButton": "Connect"
+  "connectButton": "Connect",
+  "createProjectTitle": "Create Project",
+  "createAddImage": "Add Image",
+  "createFielddName": "PROJECT NAME",
+  "createFieldPlaceholder": "Something Catchy...",
+  "createFieldAddress": "PROJECT ADDRESS",
+  "createFieldAddressPlaceholder": "123 Disney way here...",
+  "createFieldPrice": "PRICE",
+  "createFieldPricePlaceholder": "PRICE",
+  "createFieldDescription": "DESCRIPTION",
+  "createFieldDescriptionPlaceholder": "Neighborhood or city..",
+  "createFieldError": "Please enter some text",
+  "createButton": "SAVE",
+  "createNoImageSelected": "No image selected",
+  "createNoPermission": "You don't have permission to access gallery",
+  "createMenuTitleImage": "Options",
+  "createMenuRemoveItem": "Remove"
 }
