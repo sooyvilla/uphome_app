@@ -40,10 +40,11 @@ La arquitectura está diseñada para facilitar la migración de servicios simula
 - Se ha implementado un [CHANGELOG.md](./CHANGELOG.md) para rastrear y visualizar los cambios en el proyecto.
 
 ## Estado Actual del Proyecto
-Debido a las limitaciones de tiempo durante la temporada navideña, algunas funcionalidades aún están pendientes de implementación. El proyecto continúa en desarrollo activo.
+El proyecto esta finalizado.
 
 ## Próximos Pasos
 - Completar la implementación de todas las funcionalidades descritas en los requisitos.
 
 ## Demo
-[![Demo Video](https://via.placeholder.com/800x450.png?text=Demo)](https://github.com/sooyvilla/uphome_app/raw/main/demo/ScreenRecording_12-27-2024%2012-55-17_1.MP4)
+- [Descargar video demo](https://github.com/sooyvilla/uphome_app/raw/main/demo/ScreenRecording_12-27-2024%2012-55-17_1.MP4)
+- [Descargar video demo 2](https://github.com/sooyvilla/uphome_app/blob/main/demo/Grabaci%C3%B3n%20de%20pantalla%202025-01-19%20a%20la(s)%2010.32.35%E2%80%AFp.m..mov)
